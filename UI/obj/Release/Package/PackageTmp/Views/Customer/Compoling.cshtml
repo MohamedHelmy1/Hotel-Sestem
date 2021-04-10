@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Compoling";
+}
+
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.22396" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.22396" />
+
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" style="margin-left:-39px">
+        @Html.Partial("_List")
+        <!--End List-->
+        
+        <form style="width: 70%;   margin-top: 30px;">
+            <div role="main" style="    margin-top: 0px;" class="form-all">
+                <ul class="form-section page-section">
+                    <li id="cid_1" class="form-input-wide" data-type="control_head">
+                        <div class="form-header-group  header-large">
+                            <div class="header-text httal htvam">
+                                <h1 id="header_1" class="form-header" data-component="header">
+                                    Complaint Form
+                                </h1>
+                                <div id="subHeader_1" class="form-subHeader">
+                                    Give your honest opinion of what you think
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="form-line" data-type="control_textbox" id="id_3">
+                        <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3"> Complaint type </label>
+                        <div id="cid_3" class="form-input-wide" data-layout="half">
+                            <input type="text" id="4" name="q3_subject" data-type="input-textbox" class="form-textbox" style="width:310px" size="310" value="" placeholder="Complaint type " data-component="textbox" aria-labelledby="label_3" />
+
+                        </div>
+                    </li>
+                    <li class="form-line" data-type="control_textarea" id="id_4">
+                        <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4"> Complaint Message </label>
+                        <div id="cid_4" class="form-input-wide" data-layout="full">
+                            <textarea id="2" class="form-textarea" name="q4_complaintMessage" style="width:648px;height:163px" data-component="textarea" aria-labelledby="label_4"></textarea>
+                        </div>
+                    </li>
+                    <li class="form-line" data-type="control_button" id="">
+                        <div id="cid_2" class="form-input-wide" data-layout="full">
+                            <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
+                                <input id="3" type="button" value="Send" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" />
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*/////////////////////////////*@
+
+<input type="hidden" id="hdnID" value="@ViewBag.Customerid" />
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#3').click(function () {
+         
+            if ($('#hdnID').val() == null || $('#hdnID').val() == "") {
+
+                window.location.href = "LoginCustomer";
+            } else {
+                sendCompling();
+                clear();
+            }
+
+
+        });
+
+    });
+    function sendCompling() {
+
+        var compiaint = $('#2').val();
+        var type = $('#4').val();
+        var id = $('#hdnID').val();
+
+        $.ajax({
+            url: "/Customer/sendCompling?TextComplait=" + compiaint + "&TypeOfComplait=" + type + "&id=" + id,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                swal({
+                    title: "send Successful",
+                    // text: "You clicked the button!",
+                    icon: "success",
+
+                    timer: 2000
+                });
+
+            }
+
+        });
+    }
+    function clear() {
+        $('#2').val("");
+        $('#4').val("");
+    }
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>

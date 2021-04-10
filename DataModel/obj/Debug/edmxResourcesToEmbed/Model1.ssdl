@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CardType">
+    <Key>
+      <PropertyRef Name="IdCardTypeId" />
+    </Key>
+    <Property Name="IdCardTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCardType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Complait">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeOfComplait" Type="nvarchar" MaxLength="50" />
+    <Property Name="TextComplait" Type="nvarchar(max)" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="time1" Type="datetime" />
+    <Property Name="time" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CustomerRoom">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerIdfk" Type="int" />
+    <Property Name="RoomIdfk" Type="int" />
+    <Property Name="IsPase" Type="bit" />
+    <Property Name="startDate" Type="nvarchar(max)" />
+    <Property Name="EndData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="IdCardNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdCardTypeFK" Type="int" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="RemaininigAmount" Type="nvarchar" MaxLength="50" />
+    <Property Name="phoneNumber" Type="int" />
+    <Property Name="gender" Type="nchar" MaxLength="20" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employe">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar(max)" />
+    <Property Name="Shift" Type="int" />
+    <Property Name="JoiningData" Type="datetime" />
+    <Property Name="Salary" Type="float" />
+    <Property Name="IdCardNumber" Type="nchar" MaxLength="50" />
+    <Property Name="IdCardTypeFk" Type="int" />
+    <Property Name="PhoneNumber" Type="int" />
+    <Property Name="EmployementTypeFk" Type="int" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmployementType">
+    <Key>
+      <PropertyRef Name="EmployementId" />
+    </Key>
+    <Property Name="EmployementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployementType" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Rooms">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomNo" Type="nchar" MaxLength="10" />
+    <Property Name="RoomType" Type="int" />
+    <Property Name="Pass" Type="bit" />
+    <Property Name="checkIn" Type="datetime" />
+    <Property Name="CheakOut" Type="datetime" />
+    <Property Name="prise" Type="float" />
+  </EntityType>
+  <EntityType Name="RoomType">
+    <Key>
+      <PropertyRef Name="RoomType" />
+    </Key>
+    <Property Name="RoomType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ShiftType">
+    <Key>
+      <PropertyRef Name="ShiftId" />
+    </Key>
+    <Property Name="ShiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftType" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="vister">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="vister" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CustomerRoom_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="CustomerRoom" Type="Self.CustomerRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="CustomerRoom">
+        <PropertyRef Name="CustomerIdfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerRoom_Rooms">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+    <End Role="CustomerRoom" Type="Self.CustomerRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="CustomerRoom">
+        <PropertyRef Name="RoomIdfk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employe_CardType">
+    <End Role="CardType" Type="Self.CardType" Multiplicity="0..1" />
+    <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardType">
+        <PropertyRef Name="IdCardTypeId" />
+      </Principal>
+      <Dependent Role="Employe">
+        <PropertyRef Name="IdCardTypeFk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employe_EmployementType">
+    <End Role="EmployementType" Type="Self.EmployementType" Multiplicity="0..1" />
+    <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployementType">
+        <PropertyRef Name="EmployementId" />
+      </Principal>
+      <Dependent Role="Employe">
+        <PropertyRef Name="EmployementTypeFk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employe_ShiftType">
+    <End Role="ShiftType" Type="Self.ShiftType" Multiplicity="0..1" />
+    <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShiftType">
+        <PropertyRef Name="ShiftId" />
+      </Principal>
+      <Dependent Role="Employe">
+        <PropertyRef Name="Shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rooms_RoomType">
+    <End Role="RoomType" Type="Self.RoomType" Multiplicity="0..1" />
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="Rooms">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CardType" EntityType="Self.CardType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complait" EntityType="Self.Complait" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerRoom" EntityType="Self.CustomerRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployementType" EntityType="Self.EmployementType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomType" EntityType="Self.RoomType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShiftType" EntityType="Self.ShiftType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vister" EntityType="Self.vister" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CustomerRoom_Customers" Association="Self.FK_CustomerRoom_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerRoom" EntitySet="CustomerRoom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerRoom_Rooms" Association="Self.FK_CustomerRoom_Rooms">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="CustomerRoom" EntitySet="CustomerRoom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employe_CardType" Association="Self.FK_Employe_CardType">
+      <End Role="CardType" EntitySet="CardType" />
+      <End Role="Employe" EntitySet="Employe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employe_EmployementType" Association="Self.FK_Employe_EmployementType">
+      <End Role="EmployementType" EntitySet="EmployementType" />
+      <End Role="Employe" EntitySet="Employe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employe_ShiftType" Association="Self.FK_Employe_ShiftType">
+      <End Role="ShiftType" EntitySet="ShiftType" />
+      <End Role="Employe" EntitySet="Employe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rooms_RoomType" Association="Self.FK_Rooms_RoomType">
+      <End Role="RoomType" EntitySet="RoomType" />
+      <End Role="Rooms" EntitySet="Rooms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

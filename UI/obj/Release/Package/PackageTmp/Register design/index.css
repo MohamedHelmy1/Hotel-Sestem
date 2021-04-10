@@ -1,0 +1,116 @@
+﻿*{
+    margin:0px;
+    padding:0px;
+    font-family:cursive;
+}
+body{
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+  
+}
+/*Start Section Style*/
+section{
+    height:100vh;
+}
+/*End Section Style*/
+.far {
+    font-weight: 900;
+}
+.imges img {
+        width: 130%;
+        position: relative;
+        top: 80px;
+        height: 97%;
+        right:100px;
+    }
+ form {
+    height: 100vh;
+    width: 100%;
+ }
+ form table{
+     position:absolute;
+     top:15%;
+     left:10%;
+     height:70%;
+     padding:10px;
+     padding-right:15px;
+ }
+.col-12 h1 {
+    color: #076db6;
+    font-family: cursive;
+    position: relative;
+     left: 45%;
+     top:1%;
+}
+form table tr td:first-child {
+    font-family: Arial;
+    font-weight: bold;
+    color: #767676;
+    width: 60px;
+}
+form table tr td input {
+    padding: 6px 0px 6px 0px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #767676;
+    text-indent: 20px;
+    color: #767676;
+}
+
+ table tr:nth-of-type(7) td input{
+     text-indent:10px;
+ }
+/*form table tr:nth-of-type(8) select { 
+               width: 230px;
+    border: none;
+    outline: 0px;
+    border-bottom: 3px solid #767676;
+    color: #0a5183;
+    font-family: sans-serif;
+}*/
+.select {
+    width: 222px;
+    border: none;
+    outline: 0px;
+    border-bottom: 3px solid #767676;
+    color: #767676;
+    font-family: sans-serif;
+}
+ form table tr:nth-of-type(8) select option{
+            color:#0a5183;
+            font-family:sans-serif;
+        }
+ table tr:last-of-type td input {
+            position: relative;
+            left: 90%;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border: none;
+            outline: 0px;
+            background-color: #0a5183;
+            padding: 10px;
+            text-indent: 0px;
+            border-radius: 20px;
+            font-family: Tahoma;
+            font-weight: bold;
+            color: #ffffff;
+            width:150px;
+        }
+table tr:last-of-type td input:hover{
+    background-color:#0b456f;
+}
+table tr td input:hover {
+    border-bottom-color: #0094ff;
+ }
+table tr td select:hover {
+    border-bottom-color: #0094ff;
+}
+table {
+        box-shadow: 30px 30px 10px 10px #076db6;
+    }
+.warning{
+    border-bottom-color:red;
+}
+#data{
+    width:86%;
+}

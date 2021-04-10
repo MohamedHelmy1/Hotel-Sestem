@@ -1,0 +1,39 @@
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\BLL.dll.config
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\BLL.dll
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\BLL.pdb
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\EntityFramework.dll
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\EntityFramework.xml
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\obj\Debug\BLL.dll
+C:\Users\HHH\Documents\Visual Studio 2015\Projects\Hotel Systems\BLL\obj\Debug\BLL.pdb
+F:\Projects\New folder\BLL\bin\Debug\BLL.dll.config
+F:\Projects\New folder\BLL\bin\Debug\BLL.dll
+F:\Projects\New folder\BLL\bin\Debug\BLL.pdb
+F:\Projects\New folder\BLL\bin\Debug\DataModel.dll
+F:\Projects\New folder\BLL\bin\Debug\EntityFramework.dll
+F:\Projects\New folder\BLL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\New folder\BLL\bin\Debug\DataModel.pdb
+F:\Projects\New folder\BLL\bin\Debug\DataModel.dll.config
+F:\Projects\New folder\BLL\bin\Debug\EntityFramework.xml
+F:\Projects\New folder\BLL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\New folder\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+F:\Projects\New folder\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\Projects\New folder\BLL\obj\Debug\BLL.csproj.CopyComplete
+F:\Projects\New folder\BLL\obj\Debug\BLL.dll
+F:\Projects\New folder\BLL\obj\Debug\BLL.pdb
+F:\Projects\HotelSystem\BLL\bin\Debug\BLL.dll.config
+F:\Projects\HotelSystem\BLL\bin\Debug\BLL.dll
+F:\Projects\HotelSystem\BLL\bin\Debug\BLL.pdb
+F:\Projects\HotelSystem\BLL\bin\Debug\DataModel.dll
+F:\Projects\HotelSystem\BLL\bin\Debug\EntityFramework.dll
+F:\Projects\HotelSystem\BLL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\HotelSystem\BLL\bin\Debug\DataModel.pdb
+F:\Projects\HotelSystem\BLL\bin\Debug\DataModel.dll.config
+F:\Projects\HotelSystem\BLL\bin\Debug\EntityFramework.xml
+F:\Projects\HotelSystem\BLL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\HotelSystem\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+F:\Projects\HotelSystem\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\Projects\HotelSystem\BLL\obj\Debug\BLL.csproj.CopyComplete
+F:\Projects\HotelSystem\BLL\obj\Debug\BLL.dll
+F:\Projects\HotelSystem\BLL\obj\Debug\BLL.pdb

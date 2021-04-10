@@ -1,0 +1,75 @@
+﻿*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+.Call {
+    background-color: #cfcfcf;
+    min-height:110px;
+    border-radius:20px;
+}
+
+    .col{
+    margin:0px 0px 35px 0px;
+   
+}
+.col h4{
+    text-transform:capitalize;
+    font-family:cursive;
+    color:#6C63FF;
+    padding:4px;
+}
+  .col input, .col select {
+       width: 200px;
+       padding: 5px 0px 5px 0px;
+       border: none;
+       outline: none;
+       border-bottom: 3px solid #676161;
+       text-indent: 8%;
+       transition: all .5s ease-in-out;
+       background-color: transparent;
+       font-family: Arial, Helvetica, sans-serif;
+       color: #7c7777;
+       margin:3px 0px 3px 5px;
+   }
+ .col select{
+     color:#7c7777;
+   }
+.col select option {
+      color: #1f15b9;
+      font-family: Arial;
+  }
+ .col input:hover, .col select:hover {
+   border-bottom-color: #6C63FF;
+   border-bottom-width:3px;
+  }
+.col p{
+    margin:10px 0px 0px 10px;
+    text-transform:capitalize;
+    color:#ff0000;
+    display:none;
+}
+input[type='submit'] {
+    width: 120px;
+    background-color:#6C63FF;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    width: 120px;
+    font-family: Courier New, Courier, monospace;
+    text-transform: capitalize;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 6px 71px 7px 3px;
+}
+
+input[type='submit']:hover{
+    background-color:#3b2ff6;
+}
+.Add tr th{
+    text-align:center;
+}
+.Add tr th,.Add tr td{
+    padding:6px;
+    color:#7c7777;
+}

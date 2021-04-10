@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="~/StyleLogin.css" rel="stylesheet" />
+    <link href="~/normalize.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hotel Systems</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <section class="container">
+        <div class="row mt-4 mb-5">
+            <div class="col-sm-6 col logo">
+                <i class="fas fa-h-square"></i><span>otel</span>
+            </div>
+            <div class="col-sm-6 col sign_up">
+                <a href="/Home/Hotel"> <button>sign up</button></a>
+            </div>
+            <button id="Smail" class="w3-bar-item w3-button w3-hide-large w3-hover-none " onclick="w3_open();"><i class="fa fa-bars"></i></button>
+
+        </div>
+</section>
+    @*<div class="container body-content">*@
+    
+        @RenderBody()
+        <hr />
+
+    @*</div>*@<footer>
+    <div class="container-fluid">
+        <div class="row mt-12">
+            <marquee class="col mt-2  mb-2">Eng:Omar Mahmoud<br />Eng:Mohamed Helmy<br />Eng:Rajab Mohamed</marquee>
+        </div>
+    </div>
+
+</footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,295 @@
+﻿
+@{
+    ViewBag.Title = "RomeEmploy";
+    Layout = "~/Views/Shared/_Admin.cshtml";}
+<head>
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        
+        .red1 {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<h1 style="text-align:center;margin-top:20px;
+padding-bottom:20px">Room</h1>
+<div class="form-group col-lg-6 col">
+    <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+        <button style="width: 40%;background: darkgray; " id="btnAddRoom" type="button" class="btn "><b>Add Room</b></button>
+
+    </div>
+    <div class="input-group col-md-6">
+        <input class="form-control " type="text" id="search" placeholder="Text Search" />
+
+    </div>
+
+</div>
+<div class="modal fade" id="showmodel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h1 id="1"></h1>
+            </div>
+            <div class="modal-body">
+                <form id=" Register">
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col">
+                            <label class="control-label">CatogreyName</label>
+                            <input class="form-control " type="text" id="txtName" placeholder="RoomName" required />
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col">
+                            <span class="input-group-addon">Room Type</span>
+                            <select class="form-control" id="ddlTypeRoom" required>
+                                <option></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col ">
+                            <span class="input-group-addon">Prise For Day</span>
+                            <input class="form-control" type="text" id="txtPrice" required />
+                        </div>
+
+
+                    </div>
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group ">
+
+                        </div>
+
+
+                    </div>
+
+
+                </form>
+                <button class="btn btn-success" style="margin-right: 40px; margin-left: 95px;  width: 30%;" id="btnSave">Save</button>
+                <button class="btn btn-success" style="margin-right: 40px;  margin-left: 95px;  width: 30%;" id="btnUpdate">Update</button>
+                <button class="btn btn-default " data-dismiss="modal" style="    width: 30%; background-color: indianred; color: white;" id="btnCancel">Cancel</button>
+                <input type="hidden" id="hdnID" value="" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" style="margin-left:-39px">
+
+        <table style="margin-left: 30px;" class="table col">
+            <thead class="thead-dark">
+                <tr style="background-color: darkgray;">
+                    <th scope="col">#</th>
+
+                    <th scope="col">RoomNo</th>
+                    <th scope="col">RoomType</th>
+                    <th scope="col">prise</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr></tr>
+
+            </tbody>
+        </table>
+        <img id="img" style="text-align:center;width: 500px;margin-left: 80px; " src="~/Imges/im.gif" alt="lood" />
+
+    </div>
+
+    </div>
+   
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            GetRoom();
+
+        })
+        $('#btnAddRoom').click(function () {
+            $("#1").html("Add Room");
+            ClearData();
+            $('#showmodel').modal('show');
+        });
+        $('#btnUpdate').hide();
+       
+        RoomType()
+        GetRoom();
+        $('#btnUpdate').click(function () {
+            updateRoom();
+        });
+        $('#btnSave').click(function () {
+            var name = $('#txtName').val();
+            var price = $('#txtPrice').val();
+            var RoomType = $('#ddlTypeRoom').val();
+
+            $.ajax({
+                url: "/Admin/AddRoom?RoomNo=" + name +
+                    "&prise=" + price +
+                    "&RoomType=" + RoomType,
+
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == "Success") {
+                        swal({
+                            title: "Saved Successful",
+
+                            icon: "success",
+
+                            timer: 2000
+                        });
+                        
+                        ClearData();
+                        GetRoom();
+                    }
+                    else {
+                        alert('Something Error!');
+                    }
+                }
+            });
+        })
+    });
+    function updateRoom() {
+        var id = $("#hdnID").val();
+        var name = $('#txtName').val();
+        var price = $('#txtPrice').val();
+        var RoomType = $('#ddlTypeRoom').val();
+
+        $.ajax({
+            url: "/Admin/updataRoom?RoomNo=" + name +
+                "&prise=" + price +
+                "&RoomType=" + RoomType +"&RoomId="+id,
+
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result == "A") {
+                   
+                    swal({
+                        title: "Update Successful",
+
+                        icon: "success",
+
+                        timer: 2000
+                    });
+                    ClearData();
+                    GetRoom();
+                }
+                else {
+                    alert('Something Error!');
+                }
+            }
+        });
+    }
+    
+    function GetRoom() {
+        var searh = $("#search").val();
+        $.ajax({
+            url: "/Customer/Room?s=" + 2 + "&search=" + searh,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                var i = 1;
+                $.each(result, function (key, item) {
+                    html += '<tr id="choise' + item.RoomId + '">';
+                    html += '<td>' + i++ + '</td>';
+                    html += '<td style="display:none">' + item.RoomId + '</td>';
+                    html += '<td>' + item.RoomNo + '</td>';
+                    html += '<td >' + item.RoomType1 + '</td>';
+                    html += '<td>' + item.prise + '</td>';
+                    html += '<td><a href="javascript:void(0);" onclick=UpdateRoom(' + item.RoomId + '); return false;>' +
+                        '<i class="fa fa-edit" style="font-size: x-large;color: blue;"></i></a>' +
+                        '</td> ';
+
+                    html += '</tr>';
+                });
+                $('.tbody').html(html);
+                $("#img").hide();
+            }
+
+        });
+    }
+    function RoomType() {
+        $.ajax({
+            url: "/Customer/RoomType",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1 >Select a RoomType</option>';
+
+                $.each(result, function (key, item) {
+                    html += '<option value=' + item.RoomType1 + ' >';
+                    html += item.Type;
+                    html += '</option>';
+                });
+                $('#ddlTypeRoom').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+    function UpdateRoom(id) {
+        $("#1").html("Update Room")
+        $("#hdnID").val(id);
+        $('#showmodel').modal('show');
+        $('#btnUpdate').show();
+        $('#btnSave').hide();
+        $.ajax({
+            url: "/Customer/GetRoom?id=" + id,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+
+                $.each(result, function (key, item) {
+
+                    $('#txtName').val(item.RoomNo);
+                    $('#txtPrice').val(item.prise);
+                    $('#ddlTypeRoom').val(item.RoomType);
+                });
+
+            }
+
+        });
+    }
+    
+   
+    function ClearData() {
+       
+        $('#txtName').val('');
+        $('#txtPrice').val('');
+        $('#ddlTypeRoom').val(-1);
+        $('#btnUpdate').hide();
+        $('#btnSave').show();
+        $('#showmodel').modal('hide');
+
+    }
+
+
+
+
+</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

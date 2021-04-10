@@ -1,0 +1,187 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    overflow-x:hidden;
+}
+/*Start Nav*/
+.container {
+    max-width: 1140px;
+    height: 10%;
+}
+.logo{
+    flex-basis:50%;
+}
+ .logo i,.logo span {
+        font-size: 60px;
+        color: #271bee;
+    }
+.sign_up{
+        flex-basis:50%;
+    }
+ .sign_up a {
+              width: 125px;
+            position: relative;
+            left: 65%;
+            border: none;
+            outline: none;
+            padding: 10px;
+            background-color: #6C63FF;
+            font-family: Arial;
+            font-weight: bold;
+            border-radius: 40px;
+            color: #ffffff;
+            text-transform: capitalize;
+            top: 25px;
+        }
+ .sign_up button:hover{
+                transform:scale(1.1);
+                background-color:#2a1ef5;
+            }
+            /*End Nav*/
+            /*Start Container*/
+.left_side {
+    flex-basis: 50%;
+ }
+ .left_side img {
+    width: 100%;
+    position:relative;
+    top:25px;
+    left:20px;
+   
+  }
+ .right-side {
+    flex-basis: 50%;
+    position: relative;
+    top: 60%;
+    left: 21%;
+    text-align: center;
+  
+     align-items: center; 
+   }
+    .right-side table caption h1 {
+        text-transform: capitalize;
+        margin-right: 25px;
+        font-family: 'Open Sans', sans-serif;
+        color: #6C63FF;
+        position: absolute;
+        bottom: 108%;
+        left: 12%;
+    }
+ .right-side table tr td input {
+       display: block;
+       outline: none;
+       border: none;
+       border-bottom: 3px solid #888;
+       padding: 8px 0px 8px 0px;
+       margin-bottom: 10px;
+       width: 237px;
+       color: #888;
+  }
+.right-side table tr td input:hover {
+     border-bottom: 3px solid #6C63FF;
+ }
+ .right-side table tr td label {
+    position: relative;
+    right: 90px;
+    display: none;
+    color: #4439fa;
+    font-weight: 300;
+    }
+.right-side table tr:first-of-type td p, .container .Home .right-side table tr:nth-of-type(2) td p {
+      position: relative;
+      top: -4px;
+      display: none;
+      right: 45px;
+      color: #0c578e;
+  }
+.right-side table tr:nth-of-type(3) td p {
+       position: relative;
+      right: 10px;
+     left: 53px;
+    text-transform: capitalize;
+    color: #888;
+    margin: 10px 26px 10px 0px;
+    cursor: pointer;
+  }
+.right-side table tr:nth-of-type(3) td p:hover {
+   color: #f14a4a;
+  }
+
+.right-side table tr:nth-of-type(4) td input {
+     margin: 10px auto;
+     outline: none;
+     background-color: #6C63FF;
+    font-size: 20px;
+   font-family: Arial;
+   border-radius: 20px;
+  color: #ffffff;
+   width: 80px;
+   transition: background-color .3s ease-in-out;
+  width: 237px;
+  transition:transform .4s ease-in-out;
+  }
+
+.right-side table tr:nth-of-type(4) input:hover {
+        background-color: #3327f1;
+        transform: scale(1.1);
+    }
+
+.right-side table tr:nth-of-type(5) td ul {
+    list-style-type: none;
+    display: flex;
+    
+   margin: 15px 0px 0px -15px;
+ }
+
+.right-side table tr:nth-of-type(5) td ul li {
+      text-align: center;
+      margin-left: 36px;
+    background-color: transparent;
+}
+
+.right-side table tr:nth-of-type(5) td ul li:hover {
+      background-color: #4640a3;
+      color: #ffffff;
+    }
+
+.right-side table tr:nth-of-type(5) td ul li {
+     color: #1376be;
+     border: 2px solid #888;
+     border-radius: 50%;
+     padding: 4px;
+    cursor: pointer;
+    }
+
+.right-side table tr:last-of-type td {
+    margin: 30px 0px 0px 10px;
+    display: flex;
+    justify-content: center;
+ }
+
+.right-side table tr:last-of-type td input {
+     background-color: #6C63FF;
+    width: 237px;
+    border-radius: 20px;
+    padding: 10px;
+   color: #ffffff;
+   text-transform: capitalize;
+   font-family:Arial;
+   cursor:pointer;
+   transition: transform .3s ease-in-out;
+  }
+ .right-side table tr:last-of-type td input:hover {
+        background-color: #3327f1;
+        transform:scale(1.1);
+    }
+footer {
+    width: 115%;
+}
+footer .container-fluid .row {
+    background-color: #271bee;
+    color: #ffffff;
+}
+   

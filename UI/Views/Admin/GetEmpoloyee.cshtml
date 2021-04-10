@@ -1,0 +1,1009 @@
+﻿
+@{
+    ViewBag.Title = "GetCustomer";
+    Layout = "~/Views/Shared/_Admin.cshtml";}
+
+
+<head>
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .darkgray {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<div class="modal fade" id="showmodel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h1 id="pEmployee"></h1>
+            </div>
+            <div class="modal-body">
+                <form id=" Register">
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control " type="text" id="name" placeholder=" AddEmpolyee" required />
+                        </div>
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="email" id="email" placeholder="Email" required />
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select class="form-control" id="staff" placeholder="staff" required>
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select class="form-control" id="shift" placeholder="Shift" required>
+                                <option></option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" style="width: 220px;" type="datetime-local" id="data" required />
+                        </div>
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="number" id="salary" placeholder="Salary" required />
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                            <input class="form-control" type="tel" id="phone" placeholder="Phone" required />
+                        </div>
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-music"></i></span>
+                            <select class="form-control" id="gender" required>
+                                <optgroup label="----Select Gender----">
+                                    <option>Select gender</option>
+                                    <option>Male</option>
+                                    <option>Famel</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select class="form-control" id="cardtype" required>
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="text" id="cardNumber" placeholder="ID Card Number" required />
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-6 col">
+                        <div class="input-group col-md-6" style="float: left; padding-right: 10px;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="password" style="border-right:aliceblue;" id="InputPass" placeholder="Password" required />
+                            <span id="pl" style="background-color: #fff;" class="input-group-addon"><i id="showPass1" class="glyphicon glyphicon-eye-open"></i><i id="hidepass1" class="glyphicon glyphicon-eye-close"></i> </span>
+
+                        </div>
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" style="border-right:aliceblue;" type="password" id="InputConfirmPass" placeholder=" onfirm Password" required />
+                            <span style="background-color: #fff;" class="input-group-addon"><i id="showPass2" class="glyphicon glyphicon-eye-open"></i><i id="hidepass2" class="glyphicon glyphicon-eye-close"></i> </span>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <button class="btn btn-info form-control" type="submit" id="save"><i class="glyphicon glyphicon-registration-mark"></i> Save </button>
+
+
+                <input type="hidden" id="hdnID" value="" />
+                <button class="btn btn-info form-control" type="submit" id="update"><i class="glyphicon glyphicon-registration-mark"></i> Update </button>
+            </div>
+        </div>
+    </div>
+</div>
+@*//*************************************@
+<div class="form-group col-lg-6 col">
+    <div class="input-group col-md-9" style="float: left; padding-right: 10px;">
+        <span class="input-group-addon">Table Search</span>
+        <input class="form-control " type="text" id="search" placeholder="Text Search"  />
+    </div>
+    <div class="input-group col-md-3">
+        <select class="form-control" id="searchElemet">
+            <option selected value="1">Empohoyee Name</option>
+            <option value="2">Email</option>
+            <option value="3">Staff	</option>
+        </select>
+    </div>
+
+</div>
+
+<div class="form-group col-lg-6 col">
+    <div class="input-group col-md-9" style="float: left; padding-right: 10px;">
+        <button style="width: 40%;background: darkgray; "  id="1" type="button" class="btn "><b>Add Ampoloyee</b></button>
+
+    </div>
+    <div class="input-group col-md-3">
+        <select class="form-control">
+            <option>select A</option>
+            <option id="a">Empohoyee Name</option>
+            <option id="b">Email</option>
+            <option id="c">Staff	</option>
+            <option id="d">shift</option>
+            <option id="e">Data</option>
+            <option id="f">Salarey</option>
+            <option id="g">phone</option>
+            <option id="h">Gender</option>
+            <option id="i"> Card Type</option>
+            <option id="j">Card Number</option>
+            <option id="k">password</option>
+
+        </select>
+    </div>
+
+</div>
+
+
+
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" style="margin-left:-30px">
+
+        <div class="col">
+            <div style="overflow-x: auto;width: 100%;" class="container mt-5">
+
+                <table id="example" class="table col">
+                    <thead class="thead-dark">
+                        <tr style="background-color: darkgray;">
+                            <th scope="col">#</th>
+
+                            <th scope="col">Empohoyee Name <a href="#" id="c1" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Email <a id="c2" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Staff <a id="c3" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Shift<a id="c4" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Date<a id="c5" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Salarey<a id="c6" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">phone<a id="c7" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Gender<a id="c8" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Card Number<a id="c9" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Card Type<a id="c10" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">password<a id="c11" href="#" style="color:red;margin-left:3px">&times;</a></th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr></tr>
+
+                    </tbody>
+                </table>
+                <img id="img" style="text-align:center;width: 500px;margin-left: 80px; " src="~/Imges/im.gif" alt="lood" />
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            sarch();
+           
+        })
+        $("#update").click(function () {
+            updateEmpoyee();
+            $('#showmodel').modal('hide');
+        })
+
+        GetEmpoloyee();
+
+        showColomTable();
+        hideColomTable();
+        hide()
+
+    });
+    function hide() {
+
+        $("#a").hide(); $("#i").hide();
+        $("#b").hide(); $("#j").hide();
+        $("#c").hide(); $("#k").hide();
+        $("#d").hide();
+        $("#e").hide();
+        $("#f").hide();
+        $("#g").hide();
+        $("#h").hide();
+    }
+    function show() {
+        $('th:nth-child(2)').show();
+        $('td:nth-child(2)').show();
+        $("#a").hide();
+        $('th:nth-child(3)').show();
+        $('td:nth-child(3)').show();
+        $("#b").hide();
+        $('th:nth-child(4)').show();
+        $('td:nth-child(4)').show();
+        $("#c").hide();
+        $('th:nth-child(5)').show();
+        $('td:nth-child(5)').show();
+        $("#d").hide();
+        $('th:nth-child(6)').hide();
+        $('td:nth-child(6)').show();
+        $("#e").hide();
+        $('th:nth-child(7)').show();
+        $('td:nth-child(7)').show();
+        $("#f").hide();
+        $('th:nth-child(8)').show();
+        $('td:nth-child(8)').show();
+        $("#g").hide();
+        $('th:nth-child(9)').show();
+        $('td:nth-child(9)').show();
+        $("#h").hide();
+        $('th:nth-child(10)').show();
+        $('td:nth-child(10)').show();
+        $("#i").hide();
+        $('th:nth-child(11)').show();
+        $('td:nth-child(11)').show();
+        $("#j").hide();
+        $('th:nth-child(12)').show();
+        $('td:nth-child(12)').show();
+        $("#k").hide();
+    }
+    function showColomTable() {
+        $("#a").click(function () {
+
+            $('th:nth-child(2)').show();
+            $('td:nth-child(2)').show();
+            $("#a").hide();
+        })
+        $("#b").click(function () {
+            $('th:nth-child(3)').show();
+            $('td:nth-child(3)').show();
+            $("#b").hide();
+        })
+        $("#c").click(function () {
+            $('th:nth-child(4)').show();
+            $('td:nth-child(4)').show();
+            $("#c").hide();
+        })
+        $("#d").click(function () {
+            $('th:nth-child(5)').show();
+            $('td:nth-child(5)').show();
+            $("#d").hide();
+        })
+        $("#e").click(function () {
+            $('th:nth-child(6)').hide();
+            $('td:nth-child(6)').show();
+            $("#e").hide();
+        })
+        $("#f").click(function () {
+            $('th:nth-child(7)').show();
+            $('td:nth-child(7)').show();
+            $("#f").hide();
+        })
+        $("#g").click(function () {
+            $('th:nth-child(8)').show();
+            $('td:nth-child(8)').show();
+            $("#g").hide();
+        })
+        $("#h").click(function () {
+            $('th:nth-child(9)').show();
+            $('td:nth-child(9)').show();
+            $("#h").hide();
+        })
+        $("#i").click(function () {
+            $('th:nth-child(10)').show();
+            $('td:nth-child(10)').show();
+            $("#i").hide();
+        })
+        $("#j").click(function () {
+            $('th:nth-child(11)').show();
+            $('td:nth-child(11)').show();
+            $("#j").hide();
+        })
+        $("#k").click(function () {
+            $('th:nth-child(12)').show();
+            $('td:nth-child(12)').show();
+            $("#k").hide();
+        })
+
+    }
+    function hideColomTable() {
+        $("#c1").click(function () {
+            $('th:nth-child(2)').hide();
+            $('td:nth-child(2)').hide();
+            $("#a").show();
+        })
+        $("#c2").click(function () {
+            $('th:nth-child(3)').hide();
+            $('td:nth-child(3)').hide();
+            $("#b").show();
+        })
+        $("#c3").click(function () {
+            $('th:nth-child(4)').hide();
+            $('td:nth-child(4)').hide();
+            $("#c").show();
+        })
+        $("#c4").click(function () {
+            $('th:nth-child(5)').hide();
+            $('td:nth-child(5)').hide();
+            $("#d").show();
+        })
+        $("#c5").click(function () {
+            $('th:nth-child(6)').hide();
+            $('td:nth-child(6)').hide();
+            $("#e").show();
+        })
+        $("#c6").click(function () {
+            $('th:nth-child(7)').hide();
+            $('td:nth-child(7)').hide();
+            $("#f").show();
+        })
+        $("#c7").click(function () {
+            $('th:nth-child(8)').hide();
+            $('td:nth-child(8)').hide();
+            $("#g").show();
+        })
+        $("#c8").click(function () {
+            $('th:nth-child(9)').hide();
+            $('td:nth-child(9)').hide();
+            $("#h").show();
+        })
+        $("#c9").click(function () {
+            $('th:nth-child(10)').hide();
+            $('td:nth-child(10)').hide();
+            $("#i").show();
+        })
+        $("#c10").click(function () {
+            $('th:nth-child(11)').hide();
+            $('td:nth-child(11)').hide();
+            $("#j").show();
+        })
+        $("#c11").click(function () {
+            $('th:nth-child(12)').hide();
+            $('td:nth-child(12)').hide();
+            $("#k").show();
+        })
+
+    }
+    function GetEmpoloyee() {
+        $.ajax({
+            url: "/Admin/Emp",
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+
+                var html = '';
+                var i = 1;
+                $.each(result, function (key, item) {
+                    html += '<tr >';
+                    html += '<td>' + i++ + '</td>';
+
+                    html += '<td>' + item.EmployeeName + '</td>';
+                    html += '<td >' + item.Email + '</td>';
+                    html += '<td>' + item.EmployementTypeFk1 + '</td>';
+                    html += '<td>' + item.Shift12 + '</td>';
+                    html += '<td >' + item.JoiningData + '</td>';
+                    html += '<td>' + item.Salary + '</td>';
+                    html += '<td>' + item.PhoneNumber + '</td>';
+                    html += '<td >' + item.Gender + '</td>';
+                    html += '<td>' + item.IdCardNumber + '</td>';
+                    html += '<td>' + item.IdCardTypeFk1 + '</td>';
+                    html += '<td>' + item.password + '</td>';
+                    html += '<td><a href="javascript:void(0);" onclick=UpdateEmpoloyee(' + item.EmployeeId + '); return false;>' +
+                        '<i class="fa fa-edit" style="font-size: x-large;color: blue;"></i></a>' +
+                        '&nbsp;&nbsp;<a href="javascript:void(0);" onclick=DeleteEmpoloyee(' + item.EmployeeId + '); return  false;> <i class="fa fa-trash" style="font-size: x-large;color: red;"></i></a > '
+
+                    '</td> ';
+
+                    html += '</tr>';
+                });
+                $('.tbody').html(html);
+                $("#img").hide();
+            }
+
+        });
+
+    }
+    function UpdateEmpoloyee(id) {
+        $("#save").hide();
+        $("#update").show();
+        $('#showmodel').modal('show');
+        $("#pEmployee").html("Update Empolyee");
+        $("#hdnID").val(id)
+
+        $.ajax({
+            url: "/Admin/updateEmpoloyee?id=" + id,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                $.each(result, function (key, item) {
+
+                    $('#name').val(item.EmployeeName);
+                    $('#staff').val(item.EmployementTypeFk);
+                    $('#phone').val(item.PhoneNumber);
+                    $('#shift').val(item.Shift);
+                    $('#email').val(item.Email);
+                    $('#InputPass').val(item.password);
+                    $('#InputConfirmPass').val(item.password);
+                    $('#cardtype').val(item.IdCardTypeFk);
+                    $('#cardNumber').val(item.IdCardNumber);
+                    $('#data').val(item.JoiningData);
+                    $('#gender').val(item.Gender);
+                    $('#salary').val(item.Salary);
+
+                });
+
+            }
+
+        });
+    }
+    function updateEmpoyee() {
+
+        var name = $('#name').val();
+        var staff = $('#staff').val();
+        var phone = $('#phone').val();
+        var shift = $('#shift').val();
+        var email = $('#email').val();
+        var InputPass = $('#InputPass').val();
+        var InputConfirmPass = $('#InputConfirmPass').val();
+        var cardtype = $('#cardtype').val();
+        var cardNumber = $('#cardNumber').val();
+        var data = $('#data').val();
+        var gender = $('#gender').val();
+        var salary = $('#salary').val();
+        var id = $('#hdnID').val();
+        $.ajax({
+            url: "/Admin/updateEmpoloyees?EmployeeName=" + name + "&Shift=" + shift + "&JoiningData="
+                + data + "&Salary=" + salary + "&EmployeeId=" + id + "&IdCardNumber=" + cardNumber +
+                "&PhoneNumber=" + phone + "&EmployementTypeFk=" + staff + "&IdCardTypeFk=" + cardtype
+                + "&Email=" + email + "&Gender=" + gender + "&password=" + InputPass,
+            type: "POST",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result == "success") {
+                    swal({
+                        title: "Update Successful",
+
+                        icon: "success",
+
+                        timer: 2000
+                    });
+                    show();
+                    GetEmpoloyee();
+                    clearRegister();
+                }
+                else {
+                   
+                    swal({
+
+                        title: "Update Faild",
+
+                        icon: "error",
+
+                        timer: 2000
+                    });
+                }
+
+            }
+
+        });
+    }
+    function DeleteEmpoloyee(id) {
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/Admin/DeletEmpoloyee?id=" + id,
+                        type: "GET",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+
+                            GetEmpoloyee();
+
+                        }
+
+                    });
+                    swal("Update Sussfuly", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your information is safe!");
+                }
+            });
+
+
+    }
+    function sarch() {
+
+        var search = $("#search").val();
+
+        var s = $("#searchElemet").val();
+
+        $.ajax({
+            url: "/Admin/Search?s=" + s + "&search=" + search,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+
+                var html = '';
+                var i = 1;
+                $.each(result, function (key, item) {
+                    html += '<tr >';
+                    html += '<td>' + i++ + '</td>';
+
+                    html += '<td>' + item.EmployeeName + '</td>';
+                    html += '<td >' + item.Email + '</td>';
+                    html += '<td>' + item.EmployementTypeFk1 + '</td>';
+                    html += '<td>' + item.Shift12 + '</td>';
+                    html += '<td >' + item.JoiningData + '</td>';
+                    html += '<td>' + item.Salary + '</td>';
+                    html += '<td>' + item.PhoneNumber + '</td>';
+                    html += '<td >' + item.Gender + '</td>';
+                    html += '<td>' + item.IdCardNumber + '</td>';
+                    html += '<td>' + item.IdCardTypeFk1 + '</td>';
+                    html += '<td>' + item.password + '</td>';
+                    html += '<td><a href="javascript:void(0);" onclick=UpdateEmpoloyee(' + item.EmployeeId + '); return false;>' +
+                        '<i class="fa fa-edit" style="font-size: x-large;color: blue;"></i></a>' +
+                        '&nbsp;&nbsp;<a href="javascript:void(0);" onclick=DeleteEmpoloyee(' + item.EmployeeId + '); return  false;> <i class="fa fa-trash" style="font-size: x-large;color: red;"></i></a > '
+
+                    '</td> ';
+
+                    html += '</tr>';
+                });
+                $('.tbody').html(html);
+            }
+
+        });
+    }
+
+</script>
+
+
+<script>
+    $('document').ready(function () {
+
+        $('#1').click(function () {
+            $("#update").hide();
+            $("#save").show();
+            $("#pEmployee").html("Add Empolyee");
+            $('#showmodel').modal('show');
+        });
+    });
+
+
+</script>
+<script>
+    $(document).ready(function () {
+        //اخفاء براجرف
+        $("#showPass2").hide();
+        $("#showPass1").hide();
+        //اختبار الباسورد
+        //$('#InputPass').keyup(function () {
+
+        //    check_pass_strong()
+
+        //})
+
+        //اظهار الباسورد واخفاءه
+        show_hide_pass();
+
+        GetStaff();
+        GetShift();
+        GetCard();
+        $('#save').click(function () {
+
+            AddEmpoloyee();
+
+        });
+        $('#email').change(function () {
+
+
+            Testemail();
+        })
+
+    });
+    //check password strong
+    function check_pass_strong() {
+        var A = 0;
+        var InputPass = $('#InputPass').val();
+
+        if (InputPass.length < 6) {
+            $('#pl').text("To Short").css("color", "red")
+        } else {
+            if (InputPass.length > 6) {
+                A++;
+            }
+            if (InputPass.match(/[0-9]+/)) A++;
+
+            if (InputPass.match(/[a-z]+/)) A++;
+            if (InputPass.match(/[A-B]+/)) { A++; }
+
+
+            if (InputPass.match(/[0-9]+[a-zA-Z]+/) && InputPass.length > 8) { A += 2 }
+
+            if (InputPass.match(/[!,$,#,%,&,*,(,),/,.,-]+/)) { A++; }
+
+
+            if (A < 3) {
+                $('#pl').appendTo("Weak").css("color", "#e9b20c")
+
+            }
+            if (A == 3) {
+                $('#pl').appendTo("Good").css("color", "#E66C2C")
+            }
+            if (A > 3) {
+
+                $('#pl').appendTo("Strong").css("color", "green")
+            }
+
+
+        }
+
+    }
+    //اظهار الباسورد واخفاءه
+    function show_hide_pass() {
+        $('#hidepass1').click(function () {
+            $('#hidepass1').hide(); $('#showPass1').show();
+            $('#InputPass').attr("type", "text")
+        })
+        $('#hidepass2').click(function () {
+            $('#hidepass2').hide(); $('#showPass2').show();
+            $('#InputConfirmPass').attr("type", "text")
+        })
+        $('#showPass1').click(function () {
+            $('#showPass1').hide(); $('#hidepass1').show();
+            $('#InputPass').attr("type", "password")
+        })
+        $('#showPass2').click(function () {
+            $('#showPass2').hide(); $('#hidepass2').show();
+            $('#InputConfirmPass').attr("type", "password")
+        })
+
+    }
+
+    //اضافه موظفين
+    function AddEmpoloyee() {
+
+        var name = $('#name').val();
+        var staff = $('#staff').val();
+        var phone = $('#phone').val();
+        var shift = $('#shift').val();
+        var email = $('#email').val();
+        var InputPass = $('#InputPass').val();
+        var InputConfirmPass = $('#InputConfirmPass').val();
+        var cardtype = $('#cardtype').val();
+        var cardNumber = $('#cardNumber').val();
+        var data = $('#data').val();
+        var gender = $('#gender').val();
+        var salary = $('#salary').val();
+
+        if (name == "" || name == undefined) {
+            $("#name").css({
+                borderColor: "red"
+            })
+
+
+        }
+
+
+        else if (email == "" || email == undefined) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#email").css({
+                borderColor: "red"
+            })
+        }
+        else if (email.includes(".") == false) {
+
+            $("#email").css({
+                borderColor: "red"
+            })
+        }
+        else if (staff == -1) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#staff").css({
+                borderColor: "red"
+            })
+        }
+
+        else if (shift == -1) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#shift").css({
+                borderColor: "red"
+            })
+        }
+
+        else if (data == "" || data == undefined) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#data").css({
+                borderColor: "red"
+            })
+        }
+        else if (salary == "" || salary == undefined) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#salary").css({
+                borderColor: "red"
+            })
+        }
+        else if (phone == "" || phone == undefined || phone.length < 5) {
+
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#phone").css({
+                borderColor: "red"
+            })
+        }
+        else if (gender == "Select gender") {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#gender").css({
+                borderColor: "red"
+            })
+        }
+        else if (cardtype == -1) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#cardtype").css({
+                borderColor: "red"
+            })
+        }
+        else if (cardNumber == "" || cardNumber == undefined) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#cardNumber").css({
+                borderColor: "red"
+            })
+        }
+
+        else if (InputPass == "" || InputPass == undefined) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#InputPass").css({
+                borderColor: "red"
+            })
+        }
+
+
+        else if (InputConfirmPass == "" || InputConfirmPass == undefined) {
+            $(".form-control").css({
+                borderColor: "#ccc"
+            })
+            $("#InputConfirmPass").css({
+                borderColor: "red"
+            })
+        }
+
+        else {
+
+            if (InputPass != InputConfirmPass) {
+                alert("confirmPassword is not equal password")
+
+            }
+
+            else {
+
+                $(".form-control").css({
+                    borderColor: "#ccc"
+                })
+
+                $.ajax({
+                    url: "/LoginHotelsystem/AddEmpoloye?EmployeeName=" + name + "&Shift=" + shift + "&JoiningData="
+                        + data + "&Salary=" + salary + "&IdCardNumber=" + cardNumber +
+                        "&PhoneNumber=" + phone + "&EmployementTypeFk=" + staff + "&IdCardTypeFk=" + cardtype
+                        + "&Email=" + email + "&Gender=" + gender + "&password=" + InputPass,
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result == "success") {
+
+                            swal({
+                                title: "Register Successful",
+                                // text: "You clicked the button!",
+                                icon: "success",
+
+                                timer: 2000
+                            });
+                            clearRegister();
+                            $("#showPass2").hide();
+                            $("#showPass1").hide();
+
+
+
+                        } else {
+                            swal({
+                                title: "Register Failed",
+                                text: "You clicked the button!",
+                                icon: "erorr",
+                                button: "OK!",
+
+                            });
+
+                        }
+
+
+                    }
+
+                });
+
+            }
+
+
+        }
+
+
+
+    }
+    //اختبار الاميل
+    function Testemail() {
+
+        $.ajax({
+            url: "/LoginHotelsystem/TestEmail?Email=" + email,
+            type: "post",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result == "success") {
+                    alert("this Email is used before")
+                }
+                else {
+
+                }
+
+
+            },
+            error: function (errormessage) {
+                alert("error");
+
+            }
+        });
+
+    }
+    function GetStaff() {
+        $.ajax({
+            url: "/LoginHotelsystem/Staff",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1 >Select a Staff</option>';
+
+                $.each(result, function (key, item) {
+                    html += '<option value=' + item.EmployementId + ' >';
+                    html += item.EmployementType1;
+                    html += '</option>';
+                });
+                $('#staff').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+    }
+    function GetShift() {
+        $.ajax({
+            url: "/LoginHotelsystem/Shift",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1>Select a Shift</option>';
+
+                $.each(result, function (key, item) {
+                    html += '<option value=' + item.ShiftId + ' >';
+                    html += item.ShiftType1;
+                    html += '</option>';
+                });
+                $('#shift').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+    }
+    function GetCard() {
+        $.ajax({
+            url: "/LoginHotelsystem/AllCard",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1>Select a Shift</option>';
+
+                $.each(result, function (key, item) {
+                    html += '<option value=' + item.IdCardTypeId + ' >';
+                    html += item.IdCardType;
+                    html += '</option>';
+                });
+                $('#cardtype').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+    }
+    function clearRegister() {
+
+        $('#name').val('');
+        $('#staff').val(-1);
+        $('#phone').val('');
+        $('#shift').val(-1);
+        $('#email').val('');
+        $('#InputPass').val('');
+        $('#InputConfirmPass').val('');
+        $('#cardtype').val(-1);
+        $('#cardNumber').val('');
+        $('#data').val('');
+        $('#gender').val("Select gender");
+        $('#salary').val('');
+        $('#hidepass1').show();
+        $('#hidepass2').show();
+    }
+
+</script>
+
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+
+

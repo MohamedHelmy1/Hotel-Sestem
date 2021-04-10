@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "RoomCustomerRoom";
+}
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" style="margin-left:-39px">
+        @Html.Partial("_List")
+        <div class="col">
+            <div class="container mt-5">
+
+                <table class="table col">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+
+                            <th scope="col">RoomNo</th>
+                            <th scope="col">RoomType</th>
+                            <th scope="col">prise</th>
+                            <th scope="col">Resive Room</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr></tr>
+
+                    </tbody>
+                </table>
+                <img id="img" style="text-align:center;width: 500px;margin-left: 80px; " src="~/Imges/im.gif" alt="lood" />
+
+                <input type="hidden" id="hdnID" value="@ViewBag.Customerid" />
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<table class="table-responsive"  style="display:none" >
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Enddate</th>
+        </tr>
+    </thead>
+   
+    <tbody class="h">
+        <tr></tr>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+       
+        GetCustomername();
+        GetRoom();
+
+    });
+    function GetRoom() {
+        $.ajax({
+            url: "/Customer/Room?s="+1,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                var i = 1;
+                $.each(result, function (key, item) {
+                    html += '<tr id="choise' + item.RoomId + '">';
+                    html += '<td>' + i++ + '</td>';
+                    html += '<td style="display:none">' + item.RoomId + '</td>';
+                    html += '<td>' + item.RoomNo + '</td>';
+                    html += '<td >' + item.RoomType + '</td>';
+                    html += '<td>' + item.prise + '</td>';
+                    html += '<td><a href="javascript:void(0);" onclick=ResiveRoom(' + item.RoomId + '); return false;>' +
+                        '<i class="fa fa-plus"  style="font-size: x-large;color: green;" aria-hidden="true"></i></a>&nbsp;&nbsp' +'<span style="color:green">Resive Room</Room>'
+                        '</td> ';
+
+                    html += '</tr>';
+                });
+                $('.tbody').html(html);
+                $("#img").hide();
+            }
+
+        });
+    }
+    function GetCustomername() {
+        $.ajax({
+            url: "/Customer/getCustomerRoom",
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    html += '<tr >';
+                    html += '<td>' + item.id+ '</td>';
+                    html += '<td>' + item.EndData + '</td>';
+                   
+
+                    html += '</tr>';
+                });
+                $('.h').html(html);
+
+                Seck();
+            }
+            
+        }); 
+       
+    }
+    function Seck() {
+       
+        var today = new Date();
+        if (today.getMonth() + 1 < 10 && today.getDate() < 10) {
+            
+            var date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-' + '0' + today.getDate();
+        } else if (today.getMonth() + 1 < 10 && today.getDate() > 10) {
+            var date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-' + today.getDate();
+
+        } else if (today.getMonth() + 1 > 10 && today.getDate() < 10) {
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + '0' + today.getDate();
+
+        } else {
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+        }
+        //var dateTime = date;
+        $('.h tr').each(function () {
+
+            var x = $(this)
+            var end = x.find("td:eq(1)").html();
+            var RoomIdfk = x.find("td:eq(0)").html();
+            
+            if (date == end) {
+                alert(RoomIdfk)
+                $.ajax({
+                    url: "/customer/Delet?id=" + RoomIdfk,
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        alert("Deleted")
+                       
+                    }
+
+                });
+            }
+            else {
+                 
+            }
+        });
+
+    }
+    function ResiveRoom(id) {
+       
+       
+        $.ajax({
+            url: "/customer/GEtRoomId?id=" + id,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+           
+        });
+        window.location.href = "customer";
+       
+        
+    }
+</script>
+

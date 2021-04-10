@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Gd";
+}
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" style="margin-left:-39px">
+        @Html.Partial("_List")
+        <div class="col">
+            <div class="container mt-5">
+
+                <table class="table col Add">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Customername</th>
+                            <th scope="col">Roomname</th>
+
+                            <th scope="col">Startdata</th>
+                            <th scope="col">EndData</th>
+                            <th scope="col">Atcain</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr></tr>
+
+                    </tbody>
+                </table>
+                <img id="img" style="text-align:center;width: 500px;margin-left: 80px; " src="~/Imges/im.gif" alt="lood" />
+
+                <input type="hidden" style="display:none" id="hdnID" value="@ViewBag.Customerid" />
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        
+        GetRoom()
+       
+    });
+    function GetRoom() {
+        var s = $('#hdnID').val();
+      
+        $.ajax({
+            url: "/Customer/Check?id=" + s,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                var i = 1;
+                $.each(result, function (key, item) {
+                    html += '<tr>';
+                    html += '<td style="display:none" >' + item.id + '</td>';
+                    html += '<td>' + i++ + '</td>';
+                    html += '<td >' + item.Name + '</td>';
+                    html += '<td>' + item.RoomName + '</td>';
+                    html += '<td >' + item.startDate + '</td>';
+                    html += '<td >' + item.EndData + '</td>';
+
+
+
+                    html += '<td><a href="javascript:void(0);" onclick=DleteRoom(' + item.id + '); return false;>' +
+                        '<i class="fas fa-trash  style="font-size: x-large;color: red;" aria-hidden="true"></i></a>&nbsp;&nbsp' + '<span style="color:red">Delet Room</Room>'
+                    '</td> ';
+                 
+                    html += '</tr>';
+                   
+                });
+                $('.tbody').html(html);
+                $("#img").hide();
+                Seck();
+            }
+
+        });
+        
+    }
+    function ResiveRoom(id) {
+
+
+        $.ajax({
+            url: "/customer/GEtRoomId?id=" + id,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+
+        });
+        window.location.href = "customer";
+
+
+    }
+    function DleteRoom(id) {
+       
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        if (id != null) {
+                            $.ajax({
+                                url: "/customer/Delet?id=" + id,
+                                type: "GET",
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                success: function (result) {
+
+                                    GetRoom();
+                                }
+
+                            });
+                        }
+                        swal("Deleted Sussfuly", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+
+
+       
+        //****************************
+       
+    }
+    function Seck() {
+        var today = new Date();
+        if (today.getMonth() + 1 < 10 && today.getDate() < 10) {
+            
+            var date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-' + '0' + today.getDate();
+        } else if (today.getMonth() + 1 < 10 && today.getDate() > 10) {
+            var date = today.getFullYear() + '-' + '0' + (today.getMonth() + 1) + '-' + today.getDate();
+           
+        } else if (today.getMonth() + 1 > 10 && today.getDate() < 10) {
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + '0' + today.getDate();
+            
+        } else
+        {
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            
+        }
+        
+        //var dateTime = date;
+        $('.tbody tr').each(function () {
+            var x = $(this)
+            var end = x.find("td:eq(5)").html();
+            var RoomIdfk = x.find("td:eq(0)").html();
+
+           
+            if (date == end) {
+                
+
+                swal({
+                    icon: 'warning',
+                    title: 'the check out the Room ',
+                    text: 'the  close Room  in 7 seconds.',
+                    timer: 7000
+                })
+
+                $.ajax({
+                    url: "/customer/Delet?id=" + RoomIdfk,
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+
+                        GetRoom();
+                    }
+
+                });
+            }
+            else {
+                
+            }
+        });
+       
+    }
+   
+</script>
+
+
+
+
+

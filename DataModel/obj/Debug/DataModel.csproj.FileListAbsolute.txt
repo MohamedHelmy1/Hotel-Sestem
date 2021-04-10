@@ -1,0 +1,23 @@
+F:\Projects\New folder\DataModel\bin\Debug\DataModel.dll.config
+F:\Projects\New folder\DataModel\bin\Debug\DataModel.dll
+F:\Projects\New folder\DataModel\bin\Debug\DataModel.pdb
+F:\Projects\New folder\DataModel\bin\Debug\EntityFramework.dll
+F:\Projects\New folder\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\New folder\DataModel\bin\Debug\EntityFramework.xml
+F:\Projects\New folder\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\New folder\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+F:\Projects\New folder\DataModel\obj\Debug\DataModel.csproj.CopyComplete
+F:\Projects\New folder\DataModel\obj\Debug\DataModel.dll
+F:\Projects\New folder\DataModel\obj\Debug\DataModel.pdb
+F:\Projects\HotelSystem\DataModel\bin\Debug\DataModel.dll.config
+F:\Projects\HotelSystem\DataModel\bin\Debug\DataModel.dll
+F:\Projects\HotelSystem\DataModel\bin\Debug\DataModel.pdb
+F:\Projects\HotelSystem\DataModel\bin\Debug\EntityFramework.dll
+F:\Projects\HotelSystem\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\HotelSystem\DataModel\bin\Debug\EntityFramework.xml
+F:\Projects\HotelSystem\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\HotelSystem\DataModel\obj\Debug\DataModel.csprojAssemblyReference.cache
+F:\Projects\HotelSystem\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+F:\Projects\HotelSystem\DataModel\obj\Debug\DataModel.csproj.CopyComplete
+F:\Projects\HotelSystem\DataModel\obj\Debug\DataModel.dll
+F:\Projects\HotelSystem\DataModel\obj\Debug\DataModel.pdb

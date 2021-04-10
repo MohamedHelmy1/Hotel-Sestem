@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Compoling";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<style>
+    .red3 {
+        background-color: darkgray;
+    }
+</style>
+
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" @*style="margin-left:-39px"*@>
+        <div class="form-group col-lg-6 col">
+            <br />
+            <h4>
+                <b style="margin-left: 45%;
+    font-size: xx-large;">compoling</b>
+            </h4>
+            <br />
+
+        </div>
+        <br />
+        <div class="form-group col-lg-12 col">
+
+            <div style="float:right;margin-right:20px;" class="input-group col-md-4">
+
+                <select class="form-control" id="Seen">
+                    <option value="1" selected>To Day</option>
+                    <option value="5">Last Day	</option>
+                    <option value="2">Last 7 Days</option>
+                    <option value="3">Last month</option>
+                    <option value="4">All Time</option>
+                </select>
+            </div>
+
+        </div>
+        <hr />
+        <div class="col t">
+
+
+        </div>
+    </div>
+
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Seen").change(function () {
+
+            Compoling();
+        });
+
+        Compoling();
+
+    });
+    function Compoling() {
+        var x = $("#Seen").val();
+
+
+        $.ajax({
+            url: "/Admin/Compolings?id=" + x,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+
+                $.each(result, function (key, item) {
+                    html += '<fieldset style="background: white;margin-bottom: 40px;" >';
+                    html += '<legend style="border: 1px solid; border-radius: 10px;" >' + " Email:-" + item.CustomerName + '</legend>';
+                    html += '<details>';
+                    html += '<summary >' + "type:- " + item.TypeOfComplait;
+                    html += '<span style="float:RIGHT";>' + item.time + '&nbsp;&nbsp&nbsp;&nbsp<a href="javascript:void(0);" onclick=DleteComplant(' + item.id + '); return false;>' +
+                        '<i  class="fa fa-trash" style="color:red;"></i></a>' + '</span>';
+
+                    html += '</summary >';
+                    html += '<p>' + item.TextComplait + '</p>';
+                    html += '</details>';
+                    html += '</fieldset >';
+
+                });
+                $('.t').html(html);
+            }
+
+        });
+
+    }
+    function DleteComplant(id) {
+
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/Admin/DeletCompolts?id=" + id,
+                        type: "Get",
+                        contenttype: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+                            Compoling()
+                        }
+
+                    });
+
+
+                    swal("Update Sussfuly", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your information is safe!");
+                }
+            });
+
+
+
+    }
+
+</script>

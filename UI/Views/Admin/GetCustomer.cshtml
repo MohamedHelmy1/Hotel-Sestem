@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "GetCustomer";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<style>
+    .red {
+        background-color: darkgray;
+    }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container-fluid ml-2 mt-4">
+    <div class="row" @*style="margin-left:-39px"*@>
+        <div class="form-group col-lg-6 col">
+            <br />
+            <h4><b style="margin-left: 45%;
+    font-size: xx-large;">Customer</b></h4>
+            <div s class="input-group col-md-12" ; padding-right: 10px;">
+                <input style="  margin-top: 20px;
+    margin-right: 40px;
+    float: right;
+    margin-bottom: 30px;" class="form-control " type="text" id="search" placeholder="Text Search" />
+            </div>
+        </div>
+        <br />
+        <div class="col">
+            <div style="overflow-x: auto;width: 100%;" class="container mt-5">
+
+                <table class="table table-hover table-bordered table-striped "   >
+                    <thead class="">
+                        <tr style="background-color: darkgray;">
+                            <th scope="col">#</th>
+
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">phone Number</th>
+                            <th scope="col">IdCard Number</th>
+                            <th scope="col">IdCard TypeFK</th>
+                            <th scope="col">gender</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr></tr>
+
+                    </tbody>
+                </table>
+                <img id="img" style="text-align:center;width: 500px;margin-left: 80px; " src="~/Imges/im.gif" alt="lood" />
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            GetCustomer();
+        })
+        GetCustomer();
+
+    });
+    function GetCustomer() {
+        var search = $("#search").val();
+        $.ajax({
+            url: "/Admin/customer?search=" + search,
+            type: "Get",
+            contenttype: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                var i = 1;
+                $.each(result, function (key, item) {
+                    html += '<tr id="choise' + item.RoomId + '">';
+                    html += '<td>' + i++ + '</td>';
+                    html += '<td style="display:none">' + item.RoomId + '</td>';
+                    html += '<td>' + item.CustomerName + '</td>';
+                    html += '<td >' + item.Email + '</td>';
+                    html += '<td>' + item.Address + '</td>';
+                    html += '<td>' + item.phoneNumber + '</td>';
+                    html += '<td >' + item.IdCardNumber + '</td>';
+                    html += '<td>' + item.IdCardTypeFK + '</td>';
+                    html += '<td>' + item.gender + '</td>';
+
+
+                    html += '</tr>';
+                });
+                $('.tbody').html(html);
+                $("#img").hide();
+            }
+
+        });
+    }
+</script>

@@ -1,0 +1,12 @@
+F:\Projects\New folder\DataModel\bin\Release\DataModel.dll.config
+F:\Projects\New folder\DataModel\bin\Release\DataModel.dll
+F:\Projects\New folder\DataModel\bin\Release\DataModel.pdb
+F:\Projects\New folder\DataModel\bin\Release\EntityFramework.dll
+F:\Projects\New folder\DataModel\bin\Release\EntityFramework.SqlServer.dll
+F:\Projects\New folder\DataModel\bin\Release\EntityFramework.xml
+F:\Projects\New folder\DataModel\bin\Release\EntityFramework.SqlServer.xml
+F:\Projects\New folder\DataModel\obj\Release\DataModel.csprojAssemblyReference.cache
+F:\Projects\New folder\DataModel\obj\Release\DataModel.csproj.CoreCompileInputs.cache
+F:\Projects\New folder\DataModel\obj\Release\DataModel.csproj.CopyComplete
+F:\Projects\New folder\DataModel\obj\Release\DataModel.dll
+F:\Projects\New folder\DataModel\obj\Release\DataModel.pdb

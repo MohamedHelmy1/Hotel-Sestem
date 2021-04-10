@@ -1,0 +1,467 @@
+﻿
+@{
+    ViewBag.Title = "REGISTER";
+
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="~/Register%20design/normalize.css" rel="stylesheet" />
+    <link href="~/Register%20design/index.css" rel="stylesheet" />
+    <title>Register</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <!--Start Register -->
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-6 col-12 ">
+                <div class=" mt-5 imges">
+                    <img src="~/Register%20design/Imges/Recepation.jpg" alt="loading..." />
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-12 ">
+                <h1>Welcome</h1>
+                <br /><br />
+                <form>
+                    <table>
+
+                        <tr>
+                            <td>FULL NAME</td>
+                            <td>
+                                <input type="text" placeholder="Full Name" id="name" />
+                                <p style="color:red;margin-left: 45px;" id="a">This is Requerd</p>
+                            </td>
+
+
+                        </tr>
+                      
+                        <tr>
+                            <td>Phone</td>
+                            <td>
+                                <input id="phone" type="tel" placeholder="phone" />
+                                <p style="color:red;margin-left: 45px;" id="c">This is Requerd</p>
+
+                            </td>
+
+                        </tr>
+                      
+                        <tr>
+                            <td>Email</td>
+                            <td>
+                                <input id="email" type="email" placeholder="Enter email" />
+                                <p style="color:red;margin-left: 45px;" id="e">This is Requerd</p>
+                                <p style="color:red;margin-left: 12px;" id="em">The Email is used Before</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>
+                                <input type="password" placeholder="Password" id="InputPass" /><i id="showPass1" class="far fa-eye"></i><i id="hidepass1" class="far fa-eye-slash"></i>
+                                <span style="margin-left:70px;" id="pl"></span>
+                                <p style="color:red;margin-left: 45px;" id="f">This is Requerd</p>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Confirm password</td>
+                            <td>
+                                <input type="password" placeholder="confirm" id="InputConfirmPass" /><i id="showPass2" class="far fa-eye"></i><i id="hidepass2" class="far fa-eye-slash"></i>
+                                <p style="color:red;margin-left: 45px;" id="g">This is Requerd</p>
+
+                                <p style="color:#c6140d;margin-left: 7px;" id="ps">The Password isnot Correct</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ID Card Type</td>
+                            <td>
+                                <select class="select" @*class="form-control"*@ id="cardtype"></select>
+                                <p style="color:red;margin-left: 45px;" id="h">This is Requerd</p>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>ID Card Namper</td>
+                            <td>
+                                <input type="text" placeholder="ID Card Number" id="cardNumber" />
+                                <p style="color:red;margin-left: 45px;" id="i">This is Requerd</p>
+                            </td>
+                        </tr>
+                      
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                <select id="gender">
+                                    <optgroup label="----Select Gender----">
+                                        <option>Select gender</option>
+                                        <option>Male</option>
+                                        <option>Famel</option>
+                                    </optgroup>
+                                </select>
+                                <p style="color:red;margin-left: 45px;" id="k">This is Requerd</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Addres</td>
+                            <td>
+                                <input type="text" placeholder="Adress" id="salary" />
+                                <p style="color:red;margin-left: 45px;" id="l">This is Requerd</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="save" type="button" value="Save" />
+                                <a href="/Customer/LoginCustomer">
+                                    <input type="button" value="Sign In" />
+                                </a>
+                            </td>
+
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--End Register-->
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="~/Register%20design/index.js"></script>
+    @*<script src="~/Register%20design/jquery-3.5.1.js"></script>*@
+
+</body>
+
+</html>
+@*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>*@
+@*cdn.jsdelivr.net*@
+<script>
+    $(document).ready(function () {
+        $("#Smail").hide();
+        //اخفاء براجرف
+        Alart();
+        //اختبار الباسورد
+        $('#InputPass').keyup(function () {
+            $('#pl').show();
+            check_pass_strong()
+
+        })
+
+        //اظهار الباسورد واخفاءه
+        show_hide_pass();
+        $('#ps').hide();
+
+       
+        GetCard();
+        $('#save').click(function () {
+            AddEmpoloyee();
+
+        });
+        $('#email').change(function () {
+
+
+            Testemail();
+        })
+
+    });
+    //check password strong
+    function check_pass_strong() {
+        var A = 0;
+        var InputPass = $('#InputPass').val();
+
+        if (InputPass.length < 6) {
+            $('#pl').text("To Short").css("color", "red")
+        } else {
+            if (InputPass.length > 6) {
+                A++;
+            }
+            if (InputPass.match(/[0-9]+/)) A++;
+
+            if (InputPass.match(/[a-z]+/)) A++;
+            if (InputPass.match(/[A-B]+/)) { A++; }
+
+
+            if (InputPass.match(/[0-9]+[a-zA-Z]+/) && InputPass.length > 8) { A += 2 }
+
+            if (InputPass.match(/[!,$,#,%,&,*,(,),/,.,-]+/)) { A++; }
+
+
+            if (A < 3) {
+                $('#pl').text("Weak").css("color", "#e9b20c")
+
+            }
+            if (A == 3) {
+                $('#pl').text("Good").css("color", "#E66C2C")
+            }
+            if (A > 3) {
+
+                $('#pl').text("Strong").css("color", "green")
+            }
+
+
+        }
+
+    }
+    //اظهار الباسورد واخفاءه
+    function show_hide_pass() {
+        $('#hidepass1').click(function () {
+            $('#hidepass1').hide(); $('#showPass1').show();
+            $('#InputPass').attr("type", "text")
+        })
+        $('#hidepass2').click(function () {
+            $('#hidepass2').hide(); $('#showPass2').show();
+            $('#InputConfirmPass').attr("type", "text")
+        })
+        $('#showPass1').click(function () {
+            $('#showPass1').hide(); $('#hidepass1').show();
+            $('#InputPass').attr("type", "password")
+        })
+        $('#showPass2').click(function () {
+            $('#showPass2').hide(); $('#hidepass2').show();
+            $('#InputConfirmPass').attr("type", "password")
+        })
+
+    }
+    function Alart() {
+        $('#showPass1').hide();
+        $('#showPass2').hide();
+        $('#pl').hide();
+        $('#a').hide();
+        $('#b').hide();
+        $('#c').hide();
+        $('#d').hide();
+        $('#e').hide();
+        $('#em').hide()
+        $('#f').hide();
+        $('#g').hide();
+        $('#h').hide();
+        $('#i').hide();
+        $('#j').hide();
+        $('#k').hide();
+        $('#l').hide();
+    }
+    //اضافه موظفين
+    function AddEmpoloyee() {
+
+        var name = $('#name').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var InputPass = $('#InputPass').val();
+        var InputConfirmPass = $('#InputConfirmPass').val();
+        var cardtype = $('#cardtype').val();
+        var cardNumber = $('#cardNumber').val();
+        var gender = $('#gender').val();
+        var Adress = $('#salary').val();
+        if (name == "" || name == undefined) {
+            $('#a').show();
+
+        }
+
+       
+        else if (phone == "" || phone == undefined || phone.length < 5) {
+            $('#b').hide();
+
+            $('#c').show();
+        }
+
+        else if (email == "" || email == undefined) {
+            $('#d').hide();
+            $('#e').show();
+        }
+        else if (email.includes(".") == false) {
+
+            $('#e').show();
+            $('#e').html("Email shoud  like a@gmail.com").css("margin-left", "0px");
+        }
+        else if (InputPass == "" || InputPass == undefined) {
+            $('#e').hide();
+            $('#f').show();
+        }
+
+        else if ($('#pl').text() == "Weak" || $('#pl').text() == "To Short") {
+            $('#e').hide();
+
+            $('#pl').html("PassWord is " + $('#pl').text()).css("margin-left", "0px");
+        }
+
+
+        else if (InputConfirmPass == "" || InputConfirmPass == undefined) {
+            $('#f').hide();
+            $('#g').show();
+        }
+        else if (cardtype == -1) {
+            $('#g').hide();
+            $('#h').show();
+        }
+        else if (cardNumber == "" || cardNumber == undefined) {
+            $('#h').hide();
+            $('#i').show();
+        }
+      
+        else if (gender == "Select gender") {
+            $('#j').hide();
+            $('#k').show();
+        }
+        else if (Adress == "" || Adress == undefined) {
+            $('#k').hide();
+            $('#l').show();
+        }
+        else {
+            if ($('#em').show() == true) {
+                alert("Aaaa")
+                swal({
+                    title: "putt anather email",
+                    text: "You clicked the button!",
+                    icon: "erorr",
+                    button: "OK!",
+
+                });
+            }
+            else if (InputPass != InputConfirmPass) {
+                $('#ps').show();
+                $('#e').hide();
+                $("#save").attr("href", "#InputConfirmPass")
+                Alart();
+
+            }
+
+            else {
+
+
+                Alart();
+                $('#ps').hide();
+                $.ajax({
+                    url: "/Customer/RegisterCustomer?CustomerName=" + name + "&Address=" + Adress + "&IdCardNumber=" + cardNumber + "&phoneNumber=" + phone +  "&IdCardTypeFK=" + cardtype
+                        + "&Email=" + email + "&gender=" + gender + "&password=" + InputPass,
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result !=0) {
+
+                            swal({
+                                title: "Register Successful",
+                                // text: "You clicked the button!",
+                                icon: "success",
+
+                                timer: 2000
+                            });
+                            clearRegister();
+                            window.location.href = "LoginCustomer";
+
+
+
+                        } else {
+                            swal({
+                                title: "Register Failed",
+                                text: "You clicked the button!",
+                                icon: "erorr",
+                                button: "OK!",
+
+                            });
+
+                        }
+
+
+                    }
+
+                });
+
+            }
+
+
+        }
+
+
+
+    }
+    //اختبار الاميل
+    function Testemail() {
+        var email = $('#email').val();
+
+        $.ajax({
+            url: "/Customer/TestEmail?Email=" + email,
+            type: "post",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result == "success") {
+
+                    $('#em').show();
+                }
+                else {
+
+                    $('#em').hide();
+                }
+
+
+            },
+            error: function (errormessage) {
+                alert("error");
+                $('#em').hide();
+            }
+        });
+
+    }
+   
+    function GetCard() {
+        $.ajax({
+            url: "/LoginHotelsystem/AllCard",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1>Select a Shift</option>';
+
+                $.each(result, function (key, item) {
+                    html += '<option value=' + item.IdCardTypeId + ' >';
+                    html += item.IdCardType;
+                    html += '</option>';
+                });
+                $('#cardtype').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+    }
+    function clearRegister() {
+
+        $('#name').val('');
+       
+        $('#phone').val('');
+       
+        $('#email').val('');
+        $('#InputPass').val('');
+        $('#InputConfirmPass').val('');
+        $('#cardtype').val(-1);
+        $('#cardNumber').val('');
+       
+        $('#gender').val("Select gender");
+        $('#salary').val('');
+        $('#hidepass1').show();
+        $('#hidepass2').show();
+    }
+</script>
+
+
+
+
+
+
